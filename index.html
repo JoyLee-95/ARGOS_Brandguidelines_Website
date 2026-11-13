@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARGOS Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Brand tokens, straight from the ARGOS guideline */
+  --navigator:#7834E2; --cloud:#FFFFFF; --focus:#4C239B; --horizon:#2E1557;
+  --light-gray:#E8E8E8; --neutral-gray:#C3C3C3; --dark-gray:#777777;
+  --mint:#77EF9E; --echo:#B792FF; --sunset:#FF6914;
+  /* Site tokens */
+  --bg:var(--cloud); --ink:var(--horizon); --muted:var(--dark-gray); --rule:#ECE8F3; --wash:#F6F3FB;
+  --display:"Elza","Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Elza","Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* Layout: fixed left index like the PDF's left title column; content in a 2-col "title | body" grid */
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--navigator)}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{font-family:var(--display);margin:0;text-wrap:balance}
+p{margin:0 0 .9em;max-width:66ch}
+button,select,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--navigator);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- Shell ---------- */
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;border-right:1px solid var(--rule);padding:28px 22px;display:flex;flex-direction:column;gap:22px;background:var(--cloud)}
+.side .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navigator)}
+.side .brand svg{height:34px;width:auto}
+.side .brand span{font:600 11px/1.3 var(--body);letter-spacing:.14em;color:var(--dark-gray);text-transform:uppercase}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav .grp{font:600 10.5px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--neutral-gray);margin:16px 0 8px}
+.nav a{display:flex;justify-content:space-between;align-items:center;text-decoration:none;color:var(--ink);font-size:14.5px;padding:6px 10px;border-radius:6px;font-weight:500}
+.nav a small{font:400 11px var(--mono);color:var(--neutral-gray)}
+.nav a:hover{background:var(--wash)}
+.nav a.on{background:var(--navigator);color:#fff}
+.nav a.on small{color:rgba(255,255,255,.7)}
+.side .foot{margin-top:auto;font-size:12px;color:var(--dark-gray);line-height:1.5}
+.pill{display:inline-flex;align-items:center;gap:6px;font:600 10.5px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;padding:5px 8px;border-radius:999px;background:var(--wash);color:var(--focus)}
+.pill.wip{background:#FFF0E7;color:#B24300}
+.topbar{display:none}
+
+main{min-width:0}
+section.sec{padding:72px 56px;border-bottom:1px solid var(--rule)}
+.chapter{background:var(--navigator);color:#fff;padding:56px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.chapter h2{font:500 clamp(40px,5vw,64px)/1 var(--display);text-transform:uppercase;letter-spacing:-.005em}
+.chapter.deep{background:var(--focus)}
+.chapter.gray{background:var(--neutral-gray)}
+.chapter span{font:500 12px var(--mono);opacity:.8}
+.row{display:grid;grid-template-columns:220px minmax(0,1fr);gap:40px;padding:36px 0;border-top:1px solid var(--rule)}
+.row:first-child{border-top:0;padding-top:0}
+.row>div{min-width:0}
+.row>h3{font:600 26px/1.08 var(--display);text-transform:uppercase;color:var(--neutral-gray);letter-spacing:.005em}
+.row>h3.p{color:var(--navigator)}
+.label{font:600 11.5px/1.3 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--focus);margin:0 0 6px}
+.lede{font-size:19px;line-height:1.55;color:var(--ink)}
+.hl{color:var(--navigator)}
+.muted{color:var(--dark-gray)}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 36px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.card{border:1px solid var(--rule);border-radius:12px;padding:20px;background:#fff}
+.note{font-size:13px;color:var(--dark-gray);border-left:3px solid var(--echo);padding:6px 0 6px 12px;margin-top:14px;max-width:66ch}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:#fff;border-radius:8px;padding:8px 12px;font-size:14px;font-weight:500;cursor:pointer;color:var(--ink)}
+.btn:hover{border-color:var(--echo)}
+.btn.pri{background:var(--navigator);border-color:var(--navigator);color:#fff}
+.btn.pri:hover{background:var(--focus)}
+.btn[hidden]{display:none}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:8px;padding:3px;gap:2px;background:var(--wash);flex-wrap:wrap}
+.seg button{border:0;background:transparent;padding:6px 11px;border-radius:6px;font-size:13.5px;cursor:pointer;font-weight:500;color:var(--ink)}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--navigator);box-shadow:0 1px 2px rgba(46,21,87,.12)}
+.ctl{display:flex;flex-wrap:wrap;gap:14px 18px;align-items:center}
+.ctl label.t{font:600 11px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--dark-gray);display:block;margin-bottom:6px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--horizon);color:#fff;padding:10px 16px;border-radius:8px;font-size:14px;opacity:0;pointer-events:none;transition:.2s;z-index:50}
+.toast.on{opacity:1;transform:translateX(-50%)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);min-height:440px}
+.hero .l{background:var(--navigator);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:40px}
+.hero .l svg.ship{position:absolute;right:8%;bottom:-2px;height:88%;width:auto}
+.hero .l .ver{color:#fff;font:500 12px var(--mono);opacity:.85;position:relative}
+.hero .r{padding:48px 48px 40px;display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.hero h1{font:500 clamp(40px,5vw,60px)/1.02 var(--display);color:var(--horizon)}
+.hero h1 b{font-weight:500;color:var(--navigator);display:block}
+.quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.quick a{display:block;text-decoration:none;border:1px solid var(--rule);border-radius:10px;padding:14px;color:var(--ink);transition:.15s}
+.quick a:hover{border-color:var(--navigator);background:var(--wash)}
+.quick a b{display:block;font-weight:600;font-size:15px;color:var(--navigator)}
+.quick a span{font-size:13px;color:var(--dark-gray)}
+
+/* Strategy */
+.values{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 36px}
+.manifesto{background:var(--navigator);color:#fff;border-radius:16px;padding:44px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:32px}
+.manifesto h3{font:600 26px/1.08 var(--display);text-transform:uppercase}
+.manifesto p{font-size:18px;line-height:1.6}
+.manifesto .end{color:var(--mint);font:500 clamp(26px,3vw,36px)/1.2 var(--display);margin-top:20px}
+.traits{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.traits span{border:1.5px solid var(--navigator);color:var(--navigator);border-radius:999px;padding:6px 14px;font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.audience{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.audience span{background:var(--wash);color:var(--focus);padding:6px 12px;border-radius:6px;font-weight:600;font-size:13px}
+
+/* Voice */
+.ex{display:flex;gap:14px;align-items:flex-start;border-radius:10px;padding:16px 18px;font-style:italic;font-size:15.5px}
+.ex.do{background:var(--navigator);color:#fff}
+.ex.dont{border:1.5px solid var(--sunset);color:var(--ink)}
+.ex i{font-style:normal;flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:700 13px var(--body)}
+.ex.do i{border:1.5px solid var(--mint);color:var(--mint)}
+.ex.dont i{border:1.5px solid var(--sunset);color:var(--sunset)}
+.checker{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;background:var(--wash);border-radius:16px;padding:28px}
+.checker textarea{width:100%;min-height:150px;border:1px solid var(--rule);border-radius:10px;padding:14px;font-size:16px;line-height:1.5;resize:vertical;background:#fff}
+.checker .samples{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.checker .samples button{font-size:12.5px;border:1px dashed var(--echo);background:#fff;border-radius:6px;padding:5px 9px;cursor:pointer;color:var(--focus)}
+.score{display:flex;flex-direction:column;gap:10px}
+.prin{background:#fff;border-radius:10px;padding:12px 14px;border-left:4px solid var(--mint)}
+.prin.warn{border-left-color:var(--sunset)}
+.prin b{display:flex;justify-content:space-between;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--focus)}
+.prin b em{font-style:normal;letter-spacing:0;text-transform:none;font-weight:600}
+.prin.warn b em{color:#C24C06}
+.prin:not(.warn) b em{color:#1E8A47}
+.prin ul{margin:6px 0 0;padding-left:18px;font-size:13.5px;color:var(--ink)}
+.verdict{font:600 15px var(--body);padding:10px 14px;border-radius:10px;background:var(--horizon);color:#fff}
+mark.flag{background:#FFE2D1;color:inherit;border-radius:3px;padding:0 2px}
+.preview-text{background:#fff;border-radius:10px;padding:14px;font-size:15px;line-height:1.55;border:1px solid var(--rule);margin-top:12px;min-height:48px}
+
+/* Logo */
+.stage{border-radius:14px;display:grid;place-items:center;padding:40px;min-height:260px;position:relative}
+.stage.white{background:#fff;border:1px solid var(--rule)}
+.stage.purple{background:var(--navigator)}
+.stage.wash{background:var(--wash)}
+.lockups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.lockups .item{border:1px solid var(--rule);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.lockups .item .art{height:180px;display:grid;place-items:center;padding:24px}
+.lockups .item .meta{padding:14px 16px;border-top:1px solid var(--rule);font-size:13.5px;flex:1}
+.lockups .item .meta b{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--navigator);margin-bottom:4px}
+.misuse{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.misuse .m{border:1px solid var(--rule);border-radius:12px;padding:18px 14px 12px;display:flex;flex-direction:column;gap:12px;align-items:center}
+.misuse .m .art{height:120px;display:flex;align-items:center;justify-content:center;gap:6px;width:100%}
+.misuse .m span{font:600 11.5px var(--body);letter-spacing:.12em;text-transform:uppercase;color:#C24C06;display:flex;gap:6px;align-items:center}
+.misuse .m span::before{content:"✕";display:grid;place-items:center;width:18px;height:18px;border:1.5px solid var(--sunset);border-radius:50%;font-size:10px;color:var(--sunset)}
+.dl{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:stretch}
+.dl .stage{min-height:340px}
+.dl .opts{display:flex;flex-direction:column;gap:18px}
+.dl .opts .act{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.forms{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.forms .f{border:1px solid var(--rule);border-radius:12px;padding:14px;text-align:left;cursor:pointer;background:#fff}
+.forms .f[aria-pressed="true"]{border-color:var(--navigator);box-shadow:0 0 0 1px var(--navigator)}
+.forms .f b{font:600 11.5px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--focus)}
+.forms .f small{display:block;color:var(--dark-gray);font:400 11.5px var(--mono)}
+.live{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:20px;background:var(--wash);border-radius:16px;padding:24px}
+.live .stage{min-height:300px}
+input[type=range]{width:100%;accent-color:var(--navigator)}
+.meter{display:flex;gap:4px;margin-top:10px}
+.meter i{flex:1;height:8px;border-radius:2px;background:var(--light-gray)}
+.meter i.on{background:var(--navigator)}
+.big{font:500 44px/1 var(--display);color:var(--navigator)}
+
+/* Color */
+.sw-main{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+.sw{border-radius:14px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:150px;position:relative}
+.sw.lg{min-height:280px}
+.sw h4{font:500 22px/1.15 var(--display)}
+.sw .role{font-size:13px;opacity:.85;margin-top:4px}
+.sw .codes{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.sw .codes button{white-space:nowrap;font:500 11.5px var(--mono);border:1px solid currentColor;background:transparent;border-radius:6px;padding:4px 8px;cursor:pointer;color:inherit;opacity:.9}
+.sw .codes button:hover{opacity:1;background:rgba(255,255,255,.14)}
+.sw .codes button.tbd{border-style:dashed}
+.sw-sup{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.sw-acc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ratio{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.ratio .r{border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:6px;min-height:110px}
+.ratio .r .s{font:500 20px/1.15 var(--display)}
+.ratio .r .k{font:500 11.5px var(--mono);display:flex;justify-content:space-between;gap:6px;margin-top:auto}
+.badge{font:600 10.5px var(--body);letter-spacing:.06em;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.9);color:var(--horizon)}
+.badge.fail{background:#FFE2D1;color:#8A3300}
+.logo-rule{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.logo-rule .c{border-radius:12px;height:130px;display:grid;place-items:center;position:relative;border:1px solid var(--rule)}
+.logo-rule .c em{position:absolute;left:10px;bottom:8px;font:600 10.5px var(--body);letter-spacing:.1em;text-transform:uppercase;font-style:normal}
+pre.code{background:var(--horizon);color:#EDE6FB;border-radius:12px;padding:18px;font:400 12.5px/1.6 var(--mono);overflow:auto;max-height:340px;margin:0}
+
+/* Type */
+.spec{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:end}
+.spec .aa{white-space:nowrap;font:500 clamp(64px,7.5vw,112px)/0.95 var(--display);color:var(--focus);letter-spacing:-.02em}
+.spec .glyphs{font:400 20px/1.5 var(--display);color:var(--navigator);word-break:break-all}
+.scale{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
+.scale .s{display:grid;grid-template-columns:200px minmax(0,1fr) 150px;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--rule)}
+.scale .s .k{font:600 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--dark-gray)}
+.scale .s .w{font:400 12px var(--mono);color:var(--dark-gray);text-align:right}
+.sandbox{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px;background:var(--wash);border-radius:16px;padding:24px}
+.sandbox .canvas{border-radius:12px;padding:32px;min-height:260px;display:flex;flex-direction:column;gap:10px;border:1px solid var(--rule)}
+.sandbox .canvas [contenteditable]{outline:none;border-radius:4px}
+.sandbox .canvas [contenteditable]:focus{box-shadow:0 0 0 2px var(--echo)}
+.sandbox .canvas .h{font:500 36px/1.1 var(--display)}
+.sandbox .canvas .st{font:600 13px var(--body);letter-spacing:.14em;text-transform:uppercase}
+.sandbox .canvas .b{font:400 16px/1.55 var(--body)}
+.checks{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.checks div{font-size:13.5px;display:flex;gap:8px;align-items:flex-start}
+.checks div::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;margin-top:6px;background:#2FB866}
+.checks div.bad::before{background:var(--sunset)}
+.sel{display:flex;gap:6px;flex-wrap:wrap}
+.chip{width:30px;height:30px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--rule);cursor:pointer;padding:0}
+.chip[aria-pressed="true"]{box-shadow:0 0 0 2px var(--navigator)}
+
+/* Motif */
+.tides{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.tides .t{border:1px solid var(--rule);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.tides .t b{font:600 11.5px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--focus)}
+.tides .t span{font-size:13px;color:var(--dark-gray)}
+.gen{align-items:start;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;background:var(--wash);border-radius:16px;padding:24px}
+.gen .out{border-radius:12px;overflow:hidden;min-height:300px;border:1px solid var(--rule)}
+.gen .out svg{display:block;width:100%;height:auto}
+
+/* Icons */
+.icons{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;border-radius:14px;padding:16px;transition:background .2s}
+.icons button{border:1px solid transparent;background:transparent;border-radius:10px;padding:16px 8px 10px;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;color:inherit}
+.icons button:hover{border-color:var(--echo)}
+.icons button svg{height:44px;width:auto}
+.icons button span{font:500 11.5px var(--mono);opacity:.75}
+.icons.dark{background:var(--navigator);color:#fff}
+.icons.light{background:#fff;border:1px solid var(--rule)}
+
+/* Tables */
+table.specs{border-collapse:collapse;width:100%;font-size:15px}
+table.specs th{font:600 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--dark-gray);text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule)}
+table.specs td{padding:11px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+table.specs td:first-child{font-weight:600;color:var(--navigator);width:150px}
+.dot{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px;border:1px solid rgba(0,0,0,.08)}
+
+/* Photo */
+.ph{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ph figure{margin:0;position:relative;border-radius:10px;overflow:hidden}
+.ph figure img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.ph.dont figure{outline:1.5px solid var(--sunset);outline-offset:-1.5px}
+.ph.dont figure::after{content:"";position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - 1px),var(--sunset) calc(50% - 1px),var(--sunset) calc(50% + 1px),transparent calc(50% + 1px))}
+.ph figcaption{position:absolute;left:8px;bottom:8px;background:#fff;font:600 11px var(--body);letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:4px;z-index:1}
+.ph.do figcaption{color:var(--focus)}
+.ph.dont figcaption{color:#C24C06}
+
+/* Applications */
+.apps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.apps figure{margin:0;border-radius:12px;overflow:hidden;background:var(--wash);position:relative}
+.apps figure img{width:100%;height:100%;object-fit:cover}
+.apps .c2{grid-column:span 2}.apps .c3{grid-column:span 3}.apps .c4{grid-column:span 4}.apps .c6{grid-column:span 6}
+.apps .r2{grid-row:span 2}
+.apps figcaption{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.94);padding:6px 10px;border-radius:6px;font:600 11px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--focus)}
+.app-text{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:28px}
+.app-text h4{font:600 13px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--navigator);margin-bottom:6px}
+.app-text p{font-size:14.5px}
+
+/* Resources */
+.issues{display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.issues label{display:grid;grid-template-columns:24px minmax(0,1fr) 110px;gap:12px;align-items:start;padding:14px 16px;border-top:1px solid var(--rule);cursor:pointer;font-size:14.5px}
+.issues label:first-child{border-top:0}
+.issues label:hover{background:var(--wash)}
+.issues input{margin-top:4px;accent-color:var(--navigator);width:16px;height:16px}
+.issues .where{font:500 11.5px var(--mono);color:var(--dark-gray);text-align:right}
+.issues label.done span.t{text-decoration:line-through;color:var(--dark-gray)}
+.issues .t b{color:var(--focus)}
+.progress{height:6px;background:var(--light-gray);border-radius:3px;overflow:hidden;margin:10px 0 16px}
+.progress i{display:block;height:100%;background:var(--navigator);transition:width .25s}
+
+footer{padding:40px 56px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--dark-gray);font-size:13px}
+
+/* Responsive */
+@media (max-width:1180px){
+  .grid4,.misuse,.forms,.tides,.logo-rule{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sw-sup{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .icons{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (max-width:980px){
+  .shell{grid-template-columns:1fr}
+  .side{position:fixed;inset:0 30% 0 0;max-width:300px;z-index:40;transform:translateX(-102%);transition:transform .2s}
+  .side.open{transform:none;box-shadow:0 0 40px rgba(46,21,87,.2)}
+  .topbar{display:flex;position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--rule);padding:12px 16px;justify-content:space-between;align-items:center}
+  .topbar svg{height:20px;width:auto;display:block}
+  section.sec{padding:48px 20px}
+  .chapter{padding:40px 20px}
+  .row{grid-template-columns:1fr;gap:16px}
+  .hero,.checker,.dl,.live,.sandbox,.gen,.spec,.sw-main,.manifesto{grid-template-columns:1fr}
+  .hero .l{min-height:300px}
+  .lockups,.grid3,.app-text{grid-template-columns:1fr}
+  .apps .c2,.apps .c3,.apps .c4{grid-column:span 6}
+  .scale .s{grid-template-columns:1fr}
+  .scale .s .w{text-align:left}
+  footer{padding:32px 20px}
+}
+@media (max-width:560px){
+  .grid2,.values,.quick,.sw-acc,.ph{grid-template-columns:1fr}
+  .sw-sup{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .icons{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .misuse,.forms,.tides,.logo-rule{grid-template-columns:1fr}
+  .issues label{grid-template-columns:24px minmax(0,1fr)}
+  .issues .where{grid-column:2;text-align:left}
+  .manifesto{padding:28px 22px}
+}
+
+/* ---------- Website header & pages ---------- */
+.shell{display:block;min-height:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+header.site{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--rule)}
+header.site .bar{max-width:1320px;margin:0 auto;padding:0 40px;height:68px;display:flex;align-items:center;gap:32px}
+header.site .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+header.site .logo svg{height:20px;width:auto;display:block}
+header.site .logo .sub{font:600 10.5px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--dark-gray);border-left:1px solid var(--rule);padding-left:12px}
+.menu{display:flex;gap:4px;margin:0 auto}
+.dd{position:relative}
+.dd .top{display:block;padding:24px 14px;text-decoration:none;color:var(--ink);font-weight:500;font-size:15px;position:relative}
+.dd .top::after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:2px;background:var(--navigator);transform:scaleX(0);transition:transform .15s}
+.dd .top.on{color:var(--navigator)}
+.dd .top.on::after,.dd:hover .top::after{transform:scaleX(1)}
+.dd .panel{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);background:#fff;border:1px solid var(--rule);border-radius:12px;box-shadow:0 18px 40px -12px rgba(46,21,87,.22);padding:8px;min-width:300px;display:grid;gap:2px;opacity:0;visibility:hidden;transition:.15s}
+.dd .panel.wide{grid-template-columns:1fr 1fr;min-width:540px}
+.dd:hover .panel,.dd:focus-within .panel{opacity:1;visibility:visible;transform:translateX(-50%)}
+.dd .panel a{display:block;padding:10px 12px;border-radius:8px;text-decoration:none;color:var(--ink);font-weight:600;font-size:14.5px}
+.dd .panel a small{display:block;font-weight:400;font-size:12.5px;color:var(--dark-gray);margin-top:2px}
+.dd .panel a:hover,.dd .panel a.on{background:var(--wash);color:var(--navigator)}
+header.site .right{display:flex;align-items:center;gap:10px}
+.btn.sm{padding:7px 12px;font-size:13.5px;text-decoration:none}
+.btn.lg{padding:13px 20px;font-size:15.5px;text-decoration:none;border-radius:10px}
+#menuBtn{display:none}
+.page[hidden]{display:none}
+section.sec,.chapter{max-width:1320px;margin:0 auto}
+.chapter{border-radius:0 0 20px 20px;padding:72px 56px 48px;min-height:240px}
+.chapter h2{font-size:clamp(48px,6vw,84px)}
+.chapter span{font:500 13px var(--body);opacity:.85;max-width:420px;text-align:right}
+
+.hero2{padding:120px 0 96px;border-bottom:1px solid var(--rule)}
+.hero2 h1{font:500 clamp(48px,7.2vw,112px)/1 var(--display);letter-spacing:-.025em;color:var(--horizon);margin:28px 0 36px}
+.hero2 h1 b{font-weight:500;color:var(--navigator)}
+.hero2 .lede{font-size:clamp(18px,1.7vw,22px);max-width:46ch;color:var(--ink)}
+.hero2 .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.home-sec{padding:72px 0 96px}
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.pillar{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);border:1px solid var(--rule);border-radius:16px;padding:28px;transition:.18s;background:#fff}
+.pillar:hover{border-color:var(--navigator);box-shadow:0 14px 30px -18px rgba(120,52,226,.5);transform:translateY(-2px)}
+.pillar .n{font:500 13px var(--mono);color:var(--echo)}
+.pillar h3{font:500 30px/1.1 var(--display);color:var(--navigator)}
+.pillar p{color:var(--dark-gray);font-size:15px;margin:0}
+.pillar ul{list-style:none;margin:auto 0 0;padding:16px 0 0;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500}
+.pillar ul li::before{content:"→ ";color:var(--echo)}
+.tools-h{display:flex;align-items:baseline;gap:16px;margin:64px 0 16px}
+.tools-h h2{font:500 28px var(--display);color:var(--horizon)}
+.tools-h p{margin:0}
+.home-sec .quick{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pager{display:flex;justify-content:space-between;gap:16px;padding-top:48px;padding-bottom:24px}
+.pager a{display:block;text-decoration:none;border:1px solid var(--rule);border-radius:12px;padding:16px 22px;min-width:220px;color:var(--navigator);font:500 20px var(--display)}
+.pager a small{display:block;font:600 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--dark-gray);margin-bottom:4px}
+.pager a.nx{text-align:right;margin-left:auto}
+.pager a:hover{border-color:var(--navigator);background:var(--wash)}
+footer{max-width:1320px;margin:0 auto}
+@media (max-width:980px){
+  header.site .bar{padding:0 20px;gap:12px}
+  header.site .logo .sub{display:none}
+  #menuBtn{display:inline-flex}
+  .menu{position:fixed;top:68px;left:0;right:0;bottom:0;background:#fff;flex-direction:column;overflow:auto;padding:12px 20px 40px;display:none;margin:0}
+  .menu.open{display:flex}
+  .dd .top{padding:16px 0 8px;font-size:22px;font-family:var(--display)}
+  .dd .top::after{display:none}
+  .dd .panel,.dd .panel.wide{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;border:0;padding:0 0 12px;min-width:0;grid-template-columns:1fr}
+  .dd:hover .panel{transform:none}
+  .wrap{padding:0 20px}
+  .hero2{padding:72px 0 64px}
+  .pillars,.home-sec .quick{grid-template-columns:1fr}
+  .chapter{border-radius:0;flex-direction:column;align-items:flex-start;min-height:0}
+  .chapter span{text-align:left}
+  .pager a{min-width:0;flex:1}
+}
+@media (max-width:560px){header.site .right .pri{display:none}}
+
+/* Full-width content */
+.row p,.note,.row .lede{max-width:none}
+.tide-view{display:block;width:100%;padding:0;border:1px solid var(--rule);border-radius:16px;overflow:hidden;background:#fff;cursor:pointer}
+.tide-view:hover{border-color:var(--echo)}
+.tide-view svg{display:block;width:100%;height:auto}
+.tide-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:14px}
+.tide-meta b{color:var(--focus);letter-spacing:.12em;text-transform:uppercase;font-size:12.5px}
+.tide-meta .dots{display:flex;gap:5px}
+.tide-meta .dots i{width:22px;height:4px;border-radius:2px;background:var(--light-gray)}
+.tide-meta .dots i.on{background:var(--navigator)}
+.tide-meta .muted{margin-left:auto}
+</style>
+</head>
+<body>
+<header class="site" id="site">
+  <div class="bar">
+    <a class="logo" href="#overview" aria-label="ARGOS Brand Guidelines home"><span id="hdLogo"></span><span class="sub">Brand Guidelines</span></a>
+    <nav class="menu" id="menu" aria-label="Main">
+      <div class="dd">
+        <a class="top" href="#brand-strategy" data-page="brand-strategy">Brand Strategy</a>
+        <div class="panel"><a href="#strategy">Foundations<small>Purpose, mission, vision, values, manifesto</small></a><a href="#audience">Audience &amp; position<small>Market, audience, insights, personality</small></a><a href="#voice">Voice &amp; tone<small>Principles, examples, voice checker</small></a></div>
+      </div>
+      <div class="dd">
+        <a class="top" href="#visual-identity" data-page="visual-identity">Visual Identity</a>
+        <div class="panel wide"><a href="#logo">Logo<small>Grid, lockups, misuse, export, forms</small></a><a href="#color">Color<small>Palette, pairings, tokens</small></a><a href="#type">Typography<small>Elza, hierarchy, sandbox</small></a><a href="#motif">Market Tides<small>Motif and pattern generator</small></a><a href="#icons">Icons<small>Style, colors, downloads</small></a><a href="#illustration">Illustration<small>Art style specification</small></a><a href="#photography">Photography<small>Direction and don’ts</small></a></div>
+      </div>
+      <div class="dd">
+        <a class="top" href="#in-use" data-page="in-use">In Use</a>
+        <div class="panel"><a href="#applications">Applications<small>Space, scent, Bose, app, goods</small></a><a href="#resources">Resources &amp; review<small>Quick rules, open items</small></a></div>
+      </div>
+    </nav>
+    <div class="right"><span class="pill wip">WIP</span><a class="btn pri sm" href="#logo-export">Get the logo</a><button class="btn sm" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button></div>
+  </div>
+</header>
+<div class="shell">
+<main id="top">
+<!-- ===================== OVERVIEW ===================== -->
+<div class="page" id="overview">
+<section class="hero2">
+  <div class="wrap">
+    <span class="pill">ARGOS Brand Guidelines · v0.9</span>
+    <h1>Navigate the tides.<br><b>Chart your own course.</b></h1>
+    <p class="lede">Everything you need to make ARGOS look, sound and behave like ARGOS: the strategy behind the brand, the rules for the visual system, and working tools to export assets that stay on-brand.</p>
+    <div class="cta"><a class="btn pri lg" href="#brand-strategy">Start with the strategy</a><a class="btn lg" href="#logo-export">Export the logo</a></div>
+  </div>
+</section>
+<section class="home-sec">
+  <div class="wrap">
+    <div class="pillars">
+      <a href="#brand-strategy" class="pillar"><span class="n">01</span><h3>Brand Strategy</h3><p>Who ARGOS is for, what it believes, and how it speaks.</p><ul><li>Foundations</li><li>Audience &amp; position</li><li>Voice &amp; tone</li></ul></a>
+      <a href="#visual-identity" class="pillar"><span class="n">02</span><h3>Visual Identity</h3><p>The logo, color, type, motif and imagery that make ARGOS recognizable.</p><ul><li>Logo</li><li>Color</li><li>Typography</li><li>Market Tides</li><li>Icons, illustration, photography</li></ul></a>
+      <a href="#in-use" class="pillar"><span class="n">03</span><h3>In Use</h3><p>The system applied to spaces, products and everyday touchpoints.</p><ul><li>Applications</li><li>Resources &amp; review</li></ul></a>
+    </div>
+    <div class="tools-h"><h2>Tools</h2><p class="muted">Work directly with the brand system.</p></div>
+    <div class="quick">
+      <a href="#logo-export"><b>Export the logo</b><span>SVG or PNG in the two approved color pairs</span></a>
+      <a href="#color"><b>Copy brand colors</b><span>HEX, RGB, CMYK and CSS tokens</span></a>
+      <a href="#voice-check"><b>Check your copy</b><span>Test a sentence against the 4 voice principles</span></a>
+      <a href="#tides-gen"><b>Generate Market Tides</b><span>Pattern files for print and screen</span></a>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="page" id="brand-strategy">
+<div class="chapter deep"><h2>Brand<br>strategy</h2><span>Foundations · Audience &amp; position · Voice &amp; tone</span></div>
+
+<!-- ===================== FOUNDATIONS ===================== -->
+<section id="strategy" class="sec">
+  <div class="row">
+    <h3 class="p">About<br>ARGOS</h3>
+    <div>
+      <p class="lede"><b class="hl">ARGOS</b> is an investing platform that integrates financial education into the investment experience. Through market insights, company information and accessible learning tools, it helps people understand the market, evaluate opportunities and make informed decisions with confidence.</p>
+      <p>The name is inspired by the <b>Argo</b>, the ship that carried the Argonauts through unfamiliar waters in Greek mythology. Navigating the seas takes an understanding of changing conditions, awareness of uncertainty and a sense of direction. Investing takes the same: knowledge, perspective and thoughtful decision-making.</p>
+    </div>
+  </div>
+  <div class="row">
+    <h3 class="p">Purpose,<br>mission,<br>vision</h3>
+    <div class="grid3">
+      <div><div class="label">Our purpose</div><p>We believe investing should begin with understanding rather than pressure or speculation. <span class="hl">We exist to make investing more approachable by helping people understand</span> financial markets, recognize potential risks, and develop independent judgment.</p></div>
+      <div><div class="label">Our mission</div><p>Integrate financial education into every stage of the investing experience, making learning a natural part of the decision-making process. <span class="hl">We help investors evaluate opportunities, understand risks, and make decisions with greater confidence and intention.</span></p></div>
+      <div><div class="label">Our vision</div><p>A healthier investing culture where knowledge guides decisions, curiosity encourages exploration, and confidence comes from understanding. <span class="hl">A future where investors navigate changing markets, think independently, and decide in line with their own goals and values.</span></p></div>
+    </div>
+  </div>
+  <div class="row">
+    <h3 class="p">Our<br>values</h3>
+    <div>
+      <div class="values">
+        <div><div class="label">Understanding</div><p>We make complex financial information accessible so investors can understand the companies, markets and economic conditions behind their decisions.</p></div>
+        <div><div class="label">Independence</div><p>We empower investors to develop their own judgment rather than simply follow others.</p></div>
+        <div><div class="label">Responsibility</div><p>We communicate financial information, potential opportunities and investment risks with clarity, transparency and honesty.</p></div>
+        <div><div class="label">Exploration</div><p>We encourage curiosity and continuous learning as investors navigate changing markets.</p></div>
+      </div>
+      <div class="note"><b>In practice:</b> make complex information easier to understand, encourage independent thinking, communicate risk transparently, and create chances to keep learning throughout the investing experience.</div>
+    </div>
+  </div>
+  <div class="row" style="border-top:0">
+    <div class="manifesto" style="grid-column:1/-1">
+      <h3>Our<br>manifesto</h3>
+      <div>
+        <p>Investing can feel like navigating unfamiliar waters.</p>
+        <p>Markets move.<br>Numbers change.<br>Opinions compete.</p>
+        <p>With so much information and pressure to act, knowing where to begin isn’t always easy.</p>
+        <p>At <b>ARGOS</b>, we believe understanding should come before action.</p>
+        <p>We help people explore the market, understand the companies behind their investments, and recognize the risks involved.</p>
+        <p>Because investing isn’t about predicting every rise and fall. It’s about learning to make informed decisions and finding your own direction.</p>
+        <div class="end">Navigate the tides.<br>Chart your own course.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== AUDIENCE ===================== -->
+<section id="audience" class="sec">
+  <div class="row">
+    <h3 class="p">Market<br>context</h3>
+    <div>
+      <p>Investing offers opportunities for financial growth, but navigating markets is hard for beginners. Complex terminology, shifting conditions and conflicting opinions make it difficult to evaluate information and understand risk.</p>
+      <p>That calls for an experience that connects financial knowledge with practical decision-making: helping users understand not only <i>how</i> to invest, but <i>why</i> they make certain choices.</p>
+    </div>
+  </div>
+  <div class="row">
+    <h3 class="p">Target<br>audience</h3>
+    <div>
+      <div class="audience"><span>20s – early 30s</span><span>Beginner investors</span><span>United States</span></div>
+      <p>Young adults who are interested in investing but have limited financial knowledge. They want a deeper understanding of the companies they consider, upcoming financial events, and the economic forces shaping the market, so they can assess opportunities from several angles and build their own strategy.</p>
+    </div>
+  </div>
+  <div class="row">
+    <h3 class="p">Key<br>insights</h3>
+    <div class="grid2">
+      <div><div class="label">Company understanding</div><p>Help investors understand the businesses behind the stocks.</p></div>
+      <div><div class="label">Earnings awareness</div><p>Make upcoming earnings announcements and relevant financial events easier to follow.</p></div>
+      <div><div class="label">Economic perspective</div><p>Connect market movements with broader economic and industry developments.</p></div>
+      <div><div class="label">Informed decisions</div><p>Provide relevant knowledge and context before investors make their own decisions.</p></div>
+    </div>
+  </div>
+  <div class="row">
+    <h3 class="p">Brand<br>positioning</h3>
+    <div>
+      <p class="lede">An information-driven investing platform for emerging investors who want more clarity in financial decision-making.</p>
+      <p>Company research, earnings announcements, market insights and financial education are integrated into one investing experience, so investors can assess opportunities, weigh risks and decide their next step on their own judgment.</p>
+    </div>
+  </div>
+  <div class="row">
+    <h3 class="p">Brand<br>personality</h3>
+    <div>
+      <div class="traits"><span>Clear</span><span>Informed</span><span>Objective</span><span>Confident</span></div>
+      <p>An analytical character establishes credibility; a structured, straightforward approach makes complex subjects easier to navigate. Every expression of the brand should convey precision, transparency and a strong sense of direction: knowledgeable, composed and dependable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VOICE ===================== -->
+<section id="voice" class="sec">
+  <div class="row">
+    <h3 class="p">Brand<br>voice</h3>
+    <div>
+      <p class="lede">Direct, precise and grounded in facts.</p>
+      <p>Present financial information with enough context that readers can tell confirmed details apart from interpretation and possible outcomes. Speak with authority without overstating certainty. Every message stays informative, measured, and respectful of the reader’s ability to reach their own conclusions.</p>
+    </div>
+  </div>
+  <div class="row">
+    <h3 class="p">Voice<br>principles</h3>
+    <div class="grid2">
+      <div><div class="label">Be direct</div><p>Lead with the most relevant information.</p></div>
+      <div><div class="label">Be precise</div><p>Use specific facts and explain their significance.</p></div>
+      <div><div class="label">Be balanced</div><p>Present opportunities alongside relevant risks.</p></div>
+      <div><div class="label">Be measured</div><p>Avoid speculation, exaggeration and artificial urgency.</p></div>
+    </div>
+  </div>
+  <div class="row">
+    <h3 class="p">Examples</h3>
+    <div class="grid2">
+      <div class="ex do"><i>✓</i>“The Federal Reserve has raised interest rates by 0.25 percentage points. Here’s how the change may affect different sectors.”</div>
+      <div class="ex dont"><i>✕</i>“Big changes are happening in the economy! Find out what everyone is talking about!”</div>
+      <div class="ex do"><i>✓</i>“The company has reported strong revenue growth, although rising operating costs may affect future profitability.”</div>
+      <div class="ex dont"><i>✕</i>“With revenue growing this fast, the company is clearly heading toward success!”</div>
+    </div>
+  </div>
+  <div class="row" id="voice-check">
+    <h3 class="p">Voice<br>checker</h3>
+    <div>
+      <p class="muted" style="font-size:14.5px">Paste a headline, push notification or paragraph. The checker flags hype, urgency, vague claims and missing risk context. It is a first pass, not an approval.</p>
+      <div class="checker">
+        <div>
+          <label class="t" for="vcIn" style="font:600 11px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--dark-gray);display:block;margin-bottom:6px">Your copy</label>
+          <textarea id="vcIn">With revenue growing this fast, the company is clearly heading toward success!</textarea>
+          <div class="samples" id="vcSamples"></div>
+          <div class="preview-text" id="vcMarked" aria-live="polite"></div>
+        </div>
+        <div class="score" id="vcOut" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="page" id="visual-identity">
+<div class="chapter"><h2>Visual<br>identity</h2><span>Logo · Color · Typography · Market Tides · Icons · Illustration · Photography</span></div>
+
+<!-- ===================== LOGO ===================== -->
+<section id="logo" class="sec">
+  <div class="row">
+    <h3>Logo</h3>
+    <div>
+      <p class="lede">The logo reflects direction, stability and independent navigation.</p>
+      <div class="stage white" id="logoHero" style="min-height:320px"></div>
+      <p style="margin-top:18px">The symbol combines the letter <b>A</b> with the form of a ship: exploration, and the freedom to chart one’s own course. Its <b>60° triangular structure</b> conveys precision, balance and direction, reflecting ARGOS’s analytical and confident character.</p>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Logo<br>grid</h3>
+    <div>
+      <div class="stage white" id="logoGrid" style="min-height:380px"><img src="assets/logo-grid.png" alt="ARGOS logo construction grid: 60° triangle guides on the symbol, and three stacked A letters showing the A-height unit used for spacing between symbol and wordmark" style="width:100%;max-width:440px;height:auto"></div>
+      <p style="margin-top:18px">The logo follows a proportional system based on the uppercase <b>A</b> of the wordmark. The cap height of A is the unit: the gap between symbol and wordmark is <b>½ A</b>, a consistent <b>1 : 2</b> relationship in the vertical lockup.</p>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Logo<br>lockup</h3>
+    <div>
+      <div class="lockups" id="lockups"></div>
+      <div class="note">The symbol and wordmark may be used independently, but must <b>never</b> be combined in a horizontal lockup.</div>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Logo<br>color</h3>
+    <div>
+      <p>The logo is permitted in exactly two combinations. No others.</p>
+      <div class="logo-rule" id="logoRule"></div>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Logo<br>misuse</h3>
+    <div>
+      <div class="misuse" id="misuse"></div>
+      <p style="margin-top:18px">Always use the logo in its approved configuration. Keep its original proportions, spacing and colors in every application. Do not distort it, resize individual elements, apply unauthorized colors, or rearrange the symbol and wordmark.</p>
+    </div>
+  </div>
+  <div class="row" id="logo-export">
+    <h3 class="p">Export<br>the logo</h3>
+    <div>
+      <div class="dl">
+        <div class="stage" id="dlStage"></div>
+        <div class="opts">
+          <div><label class="t">Version</label><div class="seg" id="dlVer"></div></div>
+          <div><label class="t">Color</label><div class="seg" id="dlCol"></div></div>
+          <div><label class="t">Background</label><div class="seg" id="dlBg"></div></div>
+          <div><label class="t">PNG width</label><div class="seg" id="dlSize"></div></div>
+          <div class="muted" style="font-size:13px" id="dlUse"></div>
+          <div class="act">
+            <button class="btn pri" id="dlSvg" hidden>Download SVG</button>
+            <button class="btn" id="dlPng" hidden>Download PNG</button>
+            <button class="btn" id="cpSvg">Copy SVG code</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="logo-forms">
+    <h3>Logo<br>forms</h3>
+    <div>
+      <p>The logo extends into a dynamic system: the ship form is isolated from the symbol and waves are introduced beneath it. The waves respond to real market data, changing in form and intensity across <b>four levels in 25% increments</b>, connecting the identity to market activity.</p>
+      <div class="forms" id="forms"></div>
+      <div class="live">
+        <div class="stage purple" id="formStage"></div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="label" style="margin:0">Live preview</div>
+          <div><span class="big" id="formIdx">18</span> <span class="muted">/ 100 market activity</span></div>
+          <div>
+            <label class="t" for="formRange" style="font:600 11px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--dark-gray)">Drag to simulate market activity</label>
+            <input type="range" id="formRange" min="0" max="100" value="18">
+            <div class="meter" id="formMeter"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <p style="font-size:14px;margin:0" id="formTxt"></p>
+          <div class="seg" id="formBg"></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:auto">
+            <button class="btn pri" id="formDl" hidden>Download SVG</button>
+            <button class="btn" id="formCp">Copy SVG code</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COLOR ===================== -->
+<section id="color" class="sec">
+  <div class="row">
+    <h3>Main<br>colors</h3>
+    <div>
+      <p><b class="hl">Navigator Purple</b> is the signature color: confidence, clarity and direction. <b>Cloud White</b> is the primary background, a clean environment that keeps information in focus. Click any value to copy it.</p>
+      <div class="sw-main" id="swMain"></div>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Support<br>colors</h3>
+    <div>
+      <p>Supporting colors set hierarchy and structure. Focus Purple carries headlines and section titles, Deep Horizon is the main text color, and the three grays support interface elements, subtle backgrounds, dividers and secondary information.</p>
+      <div class="sw-sup" id="swSup"></div>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Accent<br>colors</h3>
+    <div>
+      <p>Used selectively in charts, icons and illustrations to highlight key information and communicate market conditions. <b>Never</b> used for typography, with one exception: Signal Mint headlines on Navigator Purple.</p>
+      <div class="sw-acc" id="swAcc"></div>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Market<br>semantics</h3>
+    <div>
+      <div class="grid2">
+        <div class="card" style="display:flex;gap:16px;align-items:center"><svg width="64" height="40" viewBox="0 0 64 40" aria-hidden="true"><polyline points="2,34 18,22 30,28 46,10 62,4" fill="none" stroke="#77EF9E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b style="color:#1E8A47">Signal Mint = up</b><br><span class="muted" style="font-size:14px">Upward movement and positive trends</span></div></div>
+        <div class="card" style="display:flex;gap:16px;align-items:center"><svg width="64" height="40" viewBox="0 0 64 40" aria-hidden="true"><polyline points="2,6 18,14 30,10 46,28 62,36" fill="none" stroke="#FF6914" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b style="color:#C24C06">Sunset Orange = down / risk</b><br><span class="muted" style="font-size:14px">Downward movement, warnings, risk indicators</span></div></div>
+      </div>
+      <div class="note">Mint on white is below 2:1 contrast. On light surfaces, pair mint lines with a label or arrow so meaning never depends on color alone.</div>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Approved<br>pairings</h3>
+    <div>
+      <p>Text and background combinations allowed by the type &amp; color rules, with live WCAG contrast. AA needs 4.5:1 for body text and 3:1 for large headlines.</p>
+      <div class="ratio" id="ratio"></div>
+    </div>
+  </div>
+  <div class="row">
+    <h3 class="p">Color<br>tokens</h3>
+    <div>
+      <div class="ctl" style="margin-bottom:12px"><div class="seg" id="tokFmt"></div><button class="btn" id="tokCopy">Copy</button><button class="btn pri" id="tokDl" hidden>Download</button></div>
+      <pre class="code" id="tokOut"></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TYPE ===================== -->
+<section id="type" class="sec">
+  <div class="row">
+    <h3>Brand<br>type</h3>
+    <div>
+      <p><b class="hl">Elza</b> is the primary typeface. Its clean, geometric letterforms and balanced proportions set a modern, confident character, and its legibility supports precise communication in print and on screen. Any font substitution or additional language support requires approval.</p>
+      <div class="spec">
+        <div class="aa">Aa Bb Cc</div>
+        <div class="glyphs">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 !?&amp;%$</div>
+      </div>
+      <div class="note">Elza is a licensed typeface and is not embedded in this site. Specimens here render in Elza if it is installed on your device, otherwise in a web stand-in. Use licensed Elza files for all production work.</div>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Type<br>hierarchy</h3>
+    <div class="scale">
+      <div class="s"><span class="k">Display, large headlines &amp; section title</span><span style="font:500 40px/1.1 var(--display);color:var(--navigator)">Knowledge shapes confidence.</span><span class="w">Elza Medium · Sentence case</span></div>
+      <div class="s"><span class="k">Section titles &amp; subtitles</span><span style="font:600 15px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--focus)">Earnings this week</span><span class="w">Elza Semibold · All caps</span></div>
+      <div class="s"><span class="k">Body &amp; supporting text</span><span style="font:400 16px/1.55 var(--body);color:var(--horizon)">Three companies in your watchlist report earnings this week. Here is what analysts expect and what could change.</span><span class="w">Elza Regular · Sentence case</span></div>
+      <div class="s"><span class="k">Labels &amp; metadata</span><span style="font:400 13px var(--body);color:var(--dark-gray)">Updated 9:41 AM ET · Source: company filings</span><span class="w">Elza Regular · Dark Gray</span></div>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Type<br>&amp; color<br>usage</h3>
+    <div>
+      <div class="grid2" style="margin-bottom:22px">
+        <table class="specs"><tr><th>Role</th><th>Allowed colors</th></tr>
+          <tr><td>Headlines</td><td><span class="dot" style="background:#7834E2"></span>Navigator · <span class="dot" style="background:#4C239B"></span>Focus · <span class="dot" style="background:#fff"></span>Cloud White · <span class="dot" style="background:#77EF9E"></span>Signal Mint*</td></tr>
+          <tr><td>Section titles</td><td><span class="dot" style="background:#4C239B"></span>Focus Purple · <span class="dot" style="background:#C3C3C3"></span>Neutral Gray</td></tr>
+          <tr><td>Body &amp; support</td><td><span class="dot" style="background:#2E1557"></span>Deep Horizon · <span class="dot" style="background:#777"></span>Dark Gray</td></tr>
+        </table>
+        <div>
+          <div class="label">Capitalization rules</div>
+          <p style="font-size:15px">Sentence case for display text, headlines and standard section titles in Elza Medium. ALL CAPS for emphasized section headings and category labels in Elza Semibold. Body and supporting text use standard sentence capitalization.</p>
+          <p style="font-size:13px" class="muted">* Signal Mint is permitted only on Navigator Purple backgrounds. Other accent colors are never used for type.</p>
+        </div>
+      </div>
+      <div class="sandbox" id="sandbox">
+        <div class="canvas" id="sbCanvas">
+          <div class="h" contenteditable="true" spellcheck="false" id="sbH">Knowledge shapes confidence.</div>
+          <div class="st" contenteditable="true" spellcheck="false" id="sbS">Make your next move with purpose</div>
+          <div class="b" contenteditable="true" spellcheck="false" id="sbB">Understand the risks and opportunities before you decide.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="label" style="margin:0">Type sandbox · edit the text, pick colors</div>
+          <div><label class="t">Background</label><div class="sel" id="sbBg"></div></div>
+          <div><label class="t">Headline</label><div class="sel" id="sbHc"></div></div>
+          <div><label class="t">Section title</label><div class="sel" id="sbSc"></div></div>
+          <div><label class="t">Body</label><div class="sel" id="sbBc"></div></div>
+          <div class="checks" id="sbChecks" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MOTIF ===================== -->
+<section id="motif" class="sec">
+  <div class="row">
+    <h3>Graphic<br>motif</h3>
+    <div>
+      <div class="label">The Market Tides motif</div>
+      <p>Derived from the 60° geometry of the logo, Market Tides translates market movement into a structured wave pattern. The points where waves converge follow the logo’s defining angle; rhythm and amplitude express levels of market activity and volatility.</p>
+      <div class="tides" id="tides"></div>
+      <p style="margin-top:18px">Repeat and connect motifs at consistent intervals to build a continuous pattern. Keep spacing even and preserve the original 60° structure. Use across business cards, wall graphics, packaging and environmental design.</p>
+    </div>
+  </div>
+  <div class="row" id="tides-gen">
+    <h3 class="p">Pattern</h3>
+    <div>
+      <button type="button" class="tide-view" id="genOut" aria-label="Show the next activity level"></button>
+      <div class="tide-meta"><span id="genLbl"></span><span class="dots" id="genDots"></span><span class="muted">Click the pattern to see the next level</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ICONS ===================== -->
+<section id="icons" class="sec">
+  <div class="row">
+    <h3>Icons</h3>
+    <div>
+      <div class="label">Icon style &amp; construction</div>
+      <p>Simple geometric line icons with a clean, minimal look. Every icon uses a consistent <b>2.5 pt stroke</b> and the <b>60° directional angle</b> from the logo. New icons follow the same stroke weight, geometric logic and angle-based construction.</p>
+      <div class="stage white" style="margin-top:8px"><img src="assets/icon-construction.png" alt="Construction view of the 12 ARGOS icons: the 60-degree directional strokes highlighted in purple, base shapes in gray" style="width:100%;max-width:520px;height:auto"></div>
+      <div class="note">Construction view only. Purple marks the 60° directional elements; gray marks the base shapes. In use, every icon is a <b>single color</b>.</div>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Icon<br>color<br>usage</h3>
+    <div>
+      <p>Icons are always one color. Navigator Purple icons sit on Cloud White or light backgrounds. Signal Mint, Cloud White and Echo Purple may be used on dark backgrounds. <b style="color:#C24C06">Sunset Orange is reserved for negative indicators, warnings and risk.</b></p>
+      <div class="ctl" style="margin-bottom:14px"><div class="seg" id="icCol"></div></div>
+      <div class="icons light" id="iconGrid"></div>
+      <p class="muted" style="font-size:13px;margin-top:10px" id="icHint">Click an icon to download its SVG, or copy the code.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ILLUSTRATION ===================== -->
+<section id="illustration" class="sec">
+  <div class="row">
+    <h3>Art<br>style</h3>
+    <div>
+      <div class="label">Illustration system</div>
+      <p>Illustrations combine geometric forms, dimensional ribbon-like shapes and clean outlines. Inspired by navigation and financial markets, they turn complex investment concepts into clear, engaging visuals.</p>
+      <table class="specs">
+        <tr><th>Element</th><th>Specification</th></tr>
+        <tr><td>Style</td><td>Geometric, 3D-inspired vector illustration</td></tr>
+        <tr><td>Outline</td><td><span class="dot" style="background:#2E1557"></span>Deep Horizon #2E1557</td></tr>
+        <tr><td>Stroke</td><td>1.5 pt weight</td></tr>
+        <tr><td>Background</td><td><span class="dot" style="background:#fff"></span>Cloud White #FFFFFF only</td></tr>
+        <tr><td>Color</td><td>Flat fills, no gradients</td></tr>
+        <tr><td>Primary</td><td><span class="dot" style="background:#7834E2"></span>Navigator Purple as the dominant surface color</td></tr>
+        <tr><td>Supporting</td><td><span class="dot" style="background:#B792FF"></span>Echo Purple &amp; <span class="dot" style="background:#4C239B"></span>Focus Purple for dimensional depth</td></tr>
+        <tr><td>Accent</td><td><span class="dot" style="background:#77EF9E"></span>Signal Mint for selective highlights</td></tr>
+        <tr><td>Linework</td><td>Clean, precise outlines with consistent stroke application</td></tr>
+        <tr><td>Subject</td><td>Navigation, market movement, investment, financial direction</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PHOTOGRAPHY ===================== -->
+<section id="photography" class="sec">
+  <div class="row">
+    <h3>Image</h3>
+    <div class="grid2" style="align-items:start">
+      <div>
+        <div class="label">Photography direction</div>
+        <p>Clean, natural and trustworthy. Predominantly white or light backgrounds, with purple accents through clothing, objects or environmental details.</p>
+        <p>Subtle angles and dynamic perspectives add depth and movement while compositions stay balanced and natural. People, objects and environments should feel authentic and effortless.</p>
+      </div>
+      <div class="ph do">
+        <figure><img src="assets/photo-do-1.jpg" alt="Woman in a purple top against a white background, looking up thoughtfully" ><figcaption>Do</figcaption></figure>
+        <figure><img src="assets/photo-do-2.jpg" alt="Man in a purple shirt looking at a laptop in a bright room" ><figcaption>Do</figcaption></figure>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Image<br>don’ts</h3>
+    <div class="grid2" style="align-items:start">
+      <div>
+        <p>Avoid outdated corporate imagery, overly staged stock photography, and visuals disconnected from the brand.</p>
+        <p>Don’t use backgrounds dominated by colors outside the brand palette, generic nature imagery, or exaggerated expressions. Avoid artificial styling and excessive retouching.</p>
+      </div>
+      <div class="ph dont">
+        <figure><img src="assets/photo-dont-1.jpg" alt="Staged office group photo" ><figcaption>Staged stock</figcaption></figure>
+        <figure><img src="assets/photo-dont-2.jpg" alt="Group of friends posing outdoors with exaggerated expressions" ><figcaption>Exaggerated</figcaption></figure>
+        <figure><img src="assets/photo-dont-3.jpg" alt="Woman at a laptop in front of a bright orange wall" ><figcaption>Off-palette</figcaption></figure>
+        <figure><img src="assets/photo-dont-4.jpg" alt="Formal corporate headshot of an older man" ><figcaption>Outdated corporate</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="page" id="in-use">
+<div class="chapter gray"><h2>In use</h2><span>Applications · Resources &amp; review</span></div>
+
+<!-- ===================== APPLICATIONS ===================== -->
+<section id="applications" class="sec">
+  <div class="apps">
+    <figure class="c2 r2"><img src="assets/space-1.jpg" alt="White ARGOS building with a wave-shaped facade" ><figcaption>Brand space</figcaption></figure>
+    <figure class="c2"><img src="assets/space-2.jpg" alt="White lounge interior with purple seating and wave ceiling" ></figure>
+    <figure class="c2"><img src="assets/scent.jpg" alt="Triangular white diffuser shaped like the ARGOS symbol" ><figcaption>Brand scent</figcaption></figure>
+    <figure class="c2"><img src="assets/space-3.jpg" alt="Large purple ARGOS symbol sculpture in a white space" ></figure>
+    <figure class="c2"><img src="assets/app-icon.jpg" alt="ARGOS app icon: white symbol on purple" ><figcaption>App icon</figcaption></figure>
+    <figure class="c3"><img src="assets/bose.jpg" alt="White headphones with purple case, ARGOS and Bose co-branding" ><figcaption>ARGOS × Bose</figcaption></figure>
+    <figure class="c3"><img src="assets/app-phone.jpg" alt="ARGOS app icon on a phone home screen" ><figcaption>App icon in context</figcaption></figure>
+    <figure class="c3"><img src="assets/business-card.jpg" alt="Purple ARGOS business cards with mint Market Tides pattern" ><figcaption>Business card</figcaption></figure>
+    <figure class="c3"><img src="assets/goods.jpg" alt="ARGOS merchandise: cap, apparel and tote bags" ><figcaption>Brand goods</figcaption></figure>
+  </div>
+  <div class="app-text">
+    <div><h4>Brand space</h4><p>Inspired by ocean waves and stock charts, the architecture turns the Market Tides motif into a recognizable form. White dominates; curved furnishings, purple accents and subtle lighting add depth and movement.</p></div>
+    <div><h4>Brand scent</h4><p>A custom air purifier and aroma diffuser built around the symbol. Geometric form, Cloud White finish and subtle purple lighting; it releases a signature sea-salt scent.</p></div>
+    <div><h4>ARGOS × Bose</h4><p>Focus matters to informed decisions. A special-edition QuietComfort carries the signature purple, logo and Market Tides pattern across headphones, case and packaging.</p></div>
+    <div><h4>App icon</h4><p>The symbol in Cloud White on Navigator Purple. Its simple geometry stays recognizable across devices, app stores and every size.</p></div>
+    <div><h4>Business card</h4><p>Navigator Purple card with the primary logo on the front and the Market Tides pattern in Signal Mint. <span class="pill wip">Copy pending</span></p></div>
+    <div><h4>Brand goods</h4><p>Clean and minimal. Caps carry the wordmark, apparel the symbol alone. Tote bags use a white lockup on Navigator Purple or a purple lockup on white. No patterns or extra graphics.</p></div>
+  </div>
+  <div class="note">App screens (p. 35) are still in progress in the source PDF and are not shown here.</div>
+</section>
+
+<!-- ===================== RESOURCES ===================== -->
+<section id="resources" class="sec">
+  <div class="row">
+    <h3 class="p">Quick<br>rules</h3>
+    <div class="grid2">
+      <div class="card"><div class="label">Logo</div><p style="font-size:14.5px;margin:0">Vertical lockup is primary. Symbol-only for icons and avatars; wordmark-only for narrow headers. Never horizontal. Purple on white or white on purple only.</p></div>
+      <div class="card"><div class="label">Color</div><p style="font-size:14.5px;margin:0">Navigator Purple + Cloud White lead. Mint means up, Orange means down or risk. Accents never set type, except Mint headlines on Navigator Purple.</p></div>
+      <div class="card"><div class="label">Type</div><p style="font-size:14.5px;margin:0">Elza only. Medium for display, Semibold caps for labels, Regular for body. Sentence case by default.</p></div>
+      <div class="card"><div class="label">Voice</div><p style="font-size:14.5px;margin:0">Direct, precise, balanced, measured. Pair every opportunity with its risk. No hype, no urgency, no certainty you can’t back up.</p></div>
+    </div>
+  </div>
+  <div class="row" id="review">
+    <h3 class="p">Open<br>items</h3>
+    <div>
+      <p>Gaps and inconsistencies found in the WIP PDF. Resolve these before the guidelines are final. Your checkmarks are saved in this browser only.</p>
+      <div class="progress"><i id="issBar"></i></div>
+      <div class="issues" id="issues"></div>
+    </div>
+  </div>
+</section>
+
+</div>
+<div class="pager wrap" id="pager"></div>
+<footer><span>ARGOS Brand Guidelines · Work in progress</span><span>Questions about the brand? Contact the ARGOS brand team before using an asset outside these rules.</span></footer>
+</main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="assets/vectors.js"></script>
+<script>
+(function(){
+const C={navigator:'#7834E2',cloud:'#FFFFFF',focus:'#4C239B',horizon:'#2E1557',light:'#E8E8E8',neutral:'#C3C3C3',dark:'#777777',mint:'#77EF9E',echo:'#B792FF',sunset:'#FF6914'};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+let DL=null;
+const dlButtons=[];
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),1800)}
+async function copy(text,label){try{await navigator.clipboard.writeText(text);toast((label||'Copied')+' ✓')}catch(e){toast('Copy blocked here. Select the text manually.')}}
+async function save(filename,data){
+  if(!DL){toast('Downloads are not available in this view. Use Copy instead.');return}
+  try{await DL.save({filename,data});toast('Saved '+filename)}catch(e){if(e&&e.code==='declined')toast('Download cancelled');else toast('Could not download: '+(e&&e.message||'unavailable'))}
+}
+function regDl(btn){dlButtons.push(btn)}
+if(window.claude&&claude.use){claude.use('downloads').then(d=>{if(d){DL=d;dlButtons.forEach(b=>b.hidden=false)}}).catch(()=>{})}
+else{
+  // Standalone hosting (e.g. GitHub Pages): use the browser's own download.
+  DL={save:async({filename,data})=>{const blob=data instanceof Blob?data:new Blob([data],{type:filename.endsWith('.svg')?'image/svg+xml':'text/plain'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);return {status:'saved'}}};
+  setTimeout(()=>dlButtons.forEach(b=>b.hidden=false),0);
+}
+
+/* ---------- Seg control helper ---------- */
+function seg(el,opts,val,onChange){
+  el.innerHTML='';el.setAttribute('role','group');
+  opts.forEach(o=>{const b=document.createElement('button');b.type='button';b.textContent=o.label;b.setAttribute('aria-pressed',o.value===val);
+    b.onclick=()=>{[...el.children].forEach(c=>c.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');onChange(o.value)};el.appendChild(b)});
+}
+
+/* ---------- Vector builders ---------- */
+const V=window.V;
+function pathsOf(g,fill,fill2){return g.paths.map(p=>`<path d="${p.d}" fill="${fill2&&p.fill&&p.fill.toUpperCase()==='#C3C3C3'?fill2:(fill||p.fill)}"/>`).join('')}
+function svgOf(g,fill,{h,cls,pad=0,bg}={}){
+  const W=g.w+pad*2,H=g.h+pad*2;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W.toFixed(2)} ${H.toFixed(2)}"${h?` height="${h}"`:''}${cls?` class="${cls}"`:''} role="img" aria-label="ARGOS">${bg?`<rect width="100%" height="100%" fill="${bg}"/>`:''}<g transform="translate(${pad} ${pad})">${pathsOf(g,fill)}</g></svg>`;
+}
+const A_UNIT=V.wordmark.h; // cap height of A
+const lockSym=V.symbol, lockWord=V.wordmark;
+// The lockup group is already composed from the master art.
+$('#hdLogo').innerHTML=svgOf(V.wordmark,C.navigator,{h:20});
+$('#logoHero').innerHTML=svgOf(V.lockup,C.navigator,{h:210});
+
+/* Lockups */
+const LOCKS=[
+  {k:'lockup',name:'Primary logo',use:'Official brand materials: banners, flyers, business cards, presentations.'},
+  {k:'symbol',name:'Symbol only',use:'App icons, favicons, social profiles and compact digital applications.'},
+  {k:'wordmark',name:'Wordmark only',use:'Narrow spaces where the vertical logo cannot fit, such as website headers and signage.'}
+];
+$('#lockups').innerHTML=LOCKS.map(l=>`<div class="item"><div class="art">${svgOf(V[l.k],C.navigator,{h:l.k==='wordmark'?34:110})}</div><div class="meta"><b>${l.name}</b>${l.use}</div></div>`).join('');
+
+/* Logo color rule */
+$('#logoRule').innerHTML=[
+  {bg:'#fff',fg:C.navigator,ok:1,t:'Purple on white'},
+  {bg:C.navigator,fg:'#fff',ok:1,t:'White on purple'},
+  {bg:C.horizon,fg:'#fff',ok:0,t:'Other backgrounds'},
+  {bg:'#fff',fg:C.mint,ok:0,t:'Accent colors'}
+].map(r=>`<div class="c" style="background:${r.bg}">${svgOf(V.lockup,r.fg,{h:78})}<em style="color:${r.ok?(r.bg==='#fff'?'#1E8A47':'#77EF9E'):'#C24C06'};${r.ok?'':'background:#fff;padding:2px 5px;border-radius:3px'}">${r.ok?'✓ ':'✕ '}${r.t}</em></div>`).join('');
+
+/* Misuse */
+(function(){
+  const sym=svgOf(V.symbol,C.navigator,{h:60}), wm=svgOf(V.wordmark,C.navigator,{h:13});
+  const m=[
+    {t:'Do not distort',a:`<div style="transform:scaleX(1.55)">${svgOf(V.lockup,C.navigator,{h:86})}</div>`},
+    {t:'Do not rescale',a:`<div style="display:flex;flex-direction:column;align-items:center;gap:6px">${svgOf(V.symbol,C.navigator,{h:70})}${svgOf(V.wordmark,C.navigator,{h:10})}</div>`},
+    {t:'Do not recolor',a:svgOf(V.lockup,C.echo,{h:86})},
+    {t:'Do not rearrange',a:`<div style="display:flex;align-items:center;gap:8px">${svgOf(V.symbol,C.navigator,{h:44})}${svgOf(V.wordmark,C.navigator,{h:16})}</div>`}
+  ];
+  $('#misuse').innerHTML=m.map(x=>`<div class="m"><div class="art">${x.a}</div><span>${x.t}</span></div>`).join('');
+})();
+
+/* ---------- Logo export ---------- */
+const dl={ver:'lockup',col:'p',bg:'on',size:1024};
+const VER_USE={lockup:LOCKS[0].use,symbol:LOCKS[1].use,wordmark:LOCKS[2].use,app:'App stores and home screens. Symbol in Cloud White on a Navigator Purple square.'};
+function exportSvg(){
+  if(dl.ver==='app'){
+    const s=V.symbol, side=Math.max(s.w,s.h)/0.6, px=(side-s.w)/2, py=(side-s.h)/2+side*0.02;
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${side.toFixed(2)} ${side.toFixed(2)}" role="img" aria-label="ARGOS app icon"><rect width="100%" height="100%" rx="${(side*0.2237).toFixed(2)}" fill="${C.navigator}"/><g transform="translate(${px.toFixed(2)} ${py.toFixed(2)})">${pathsOf(s,'#FFFFFF')}</g></svg>`;
+  }
+  const fg=dl.col==='p'?C.navigator:'#FFFFFF', bg=dl.bg==='on'?(dl.col==='p'?'#FFFFFF':C.navigator):null;
+  return svgOf(V[dl.ver],fg,{pad:dl.bg==='on'?A_UNIT:0,bg});
+}
+function renderDl(){
+  const isApp=dl.ver==='app';
+  const st=$('#dlStage');
+  st.className='stage '+(isApp?'wash':(dl.col==='p'?'white':'purple'));
+  if(dl.bg==='off'&&!isApp)st.style.backgroundImage=dl.col==='p'?'':'none';
+  st.innerHTML=exportSvg().replace('<svg ','<svg style="max-width:80%;max-height:240px;width:auto;height:'+(dl.ver==='wordmark'?'52px':'220px')+'" ');
+  $('#dlUse').textContent=VER_USE[dl.ver];
+  $$('#dlCol button,#dlBg button').forEach(b=>b.disabled=isApp);
+  $('#dlCol').style.opacity=$('#dlBg').style.opacity=isApp?.45:1;
+}
+seg($('#dlVer'),[{label:'Primary',value:'lockup'},{label:'Symbol',value:'symbol'},{label:'Wordmark',value:'wordmark'},{label:'App icon',value:'app'}],dl.ver,v=>{dl.ver=v;renderDl()});
+seg($('#dlCol'),[{label:'Purple on white',value:'p'},{label:'White on purple',value:'w'}],dl.col,v=>{dl.col=v;renderDl()});
+seg($('#dlBg'),[{label:'With background',value:'on'},{label:'Transparent',value:'off'}],dl.bg,v=>{dl.bg=v;renderDl()});
+seg($('#dlSize'),[{label:'512',value:512},{label:'1024',value:1024},{label:'2048',value:2048},{label:'4096',value:4096}],dl.size,v=>{dl.size=v});
+renderDl();
+function fname(ext){const n={lockup:'primary',symbol:'symbol',wordmark:'wordmark',app:'app-icon'}[dl.ver];return dl.ver==='app'?`ARGOS_${n}.${ext}`:`ARGOS_${n}_${dl.col==='p'?'purple':'white'}${dl.bg==='off'?'_transparent':''}.${ext}`}
+function svgToPng(svg,width){return new Promise((res,rej)=>{
+  const vb=svg.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/);const w=width,h=Math.round(width*(+vb[2])/(+vb[1]));
+  const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);c.toBlob(b=>b?res(b):rej(new Error('PNG failed')),'image/png')};img.onerror=()=>rej(new Error('Render failed'));
+  img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg.replace('<svg ',`<svg width="${w}" height="${h}" `));
+})}
+$('#dlSvg').onclick=()=>save(fname('svg'),exportSvg());
+$('#dlPng').onclick=async()=>{try{save(fname('png'),await svgToPng(exportSvg(),dl.size))}catch(e){toast(e.message)}};
+$('#cpSvg').onclick=()=>copy(exportSvg(),'SVG copied');
+regDl($('#dlSvg'));regDl($('#dlPng'));
+
+/* ---------- Logo forms ---------- */
+const LV=[
+  {k:'Calm',d:'Gentle movement',cyc:1,amp:9},
+  {k:'Moderate',d:'Balanced movement',cyc:2,amp:10},
+  {k:'Active',d:'Increased movement',cyc:3,amp:13},
+  {k:'Volatile',d:'Intense movement',cyc:4,amp:22}
+];
+let formState={val:18,bg:'p',phase:0};
+function lvlOf(v){return Math.min(3,Math.floor(v/25))}
+function formSvg(level,{phase=0,bg='p',standalone=true}={}){
+  const s=V.ship, L=LV[level];
+  const x0=-20,x1=s.w+14, base=s.h-18, sw=9;
+  const amp=L.amp*(1+(level===3?0:0)), lam=(x1-x0)/L.cyc;
+  let d='';for(let x=x0;x<=x1;x+=3){const y=base-amp*Math.sin((x-x0)/lam*Math.PI*2+phase);d+=(d?' L ':'M ')+x.toFixed(1)+' '+y.toFixed(1)}
+  const clip=d+` L ${x1} -10 L ${x0} -10 Z`;
+  const shipFill=bg==='p'?'#FFFFFF':C.navigator, bgc=bg==='p'?C.navigator:'#FFFFFF';
+  const pad=40, W=s.w+pad*2+30, H=s.h+pad*2;
+  const id='c'+level+Math.random().toString(36).slice(2,6);
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="ARGOS logo form: ${L.k}">${standalone?`<rect width="100%" height="100%" fill="${bgc}"/>`:''}<defs><clipPath id="${id}"><path d="${clip}"/></clipPath></defs><g transform="translate(${pad+15} ${pad})"><path d="${s.paths[0].d}" fill="${shipFill}"/><g clip-path="url(#${id})"><path d="${s.paths[1].d}" fill="${shipFill}"/></g><path d="${d}" fill="none" stroke="${C.mint}" stroke-width="${sw}" stroke-linecap="round"/></g></svg>`;
+}
+$('#forms').innerHTML=LV.map((L,i)=>`<button class="f" type="button" data-i="${i}" aria-pressed="false">${formSvg(i,{bg:'w',standalone:false}).replace('<svg ','<svg style="width:100%;height:auto;max-height:150px" ')}<b>${L.k}</b><small>${i*25}–${i===3?100:i*25+24} · ${L.d}</small></button>`).join('');
+$$('#forms .f').forEach(b=>b.onclick=()=>{const v=+b.dataset.i*25+12;$('#formRange').value=v;formState.val=v;renderForm()});
+seg($('#formBg'),[{label:'On Navigator Purple',value:'p'},{label:'On Cloud White',value:'w'}],'p',v=>{formState.bg=v;renderForm()});
+function renderForm(){
+  const v=formState.val, l=lvlOf(v);
+  $('#formIdx').textContent=v;
+  $$('#formMeter i').forEach((m,i)=>m.classList.toggle('on',i<=l));
+  $$('#forms .f').forEach((b,i)=>b.setAttribute('aria-pressed',i===l));
+  $('#formTxt').innerHTML=`<b style="color:var(--focus);letter-spacing:.12em;text-transform:uppercase;font-size:12px">${LV[l].k}</b> · ${LV[l].d}. Range ${l*25}–${l===3?100:l*25+24}.`;
+  $('#formStage').className='stage '+(formState.bg==='p'?'purple':'white');
+  drawFormFrame();
+}
+function drawFormFrame(){
+  const l=lvlOf(formState.val);
+  $('#formStage').innerHTML=formSvg(l,{phase:formState.phase,bg:formState.bg,standalone:false}).replace('<svg ','<svg style="height:250px;width:auto" ');
+}
+$('#formRange').oninput=e=>{formState.val=+e.target.value;renderForm()};
+renderForm();
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce){let last=0;function tick(t){if(t-last>50){formState.phase-= .05+lvlOf(formState.val)*.03;drawFormFrame();last=t}requestAnimationFrame(tick)}requestAnimationFrame(tick)}
+$('#formDl').onclick=()=>save(`ARGOS_logo-form_${LV[lvlOf(formState.val)].k.toLowerCase()}.svg`,formSvg(lvlOf(formState.val),{bg:formState.bg}));
+$('#formCp').onclick=()=>copy(formSvg(lvlOf(formState.val),{bg:formState.bg}),'SVG copied');
+regDl($('#formDl'));
+
+/* ---------- Colors ---------- */
+const COLORS=[
+  {id:'navigator',name:'Navigator Purple',hex:'#7834E2',rgb:'120 52 226',cmyk:'66 79 0 0',role:'Signature color. Logo, primary surfaces, headlines.',grp:'main',fg:'#fff'},
+  {id:'cloud',name:'Cloud White',hex:'#FFFFFF',rgb:'255 255 255',cmyk:'0 0 0 0',role:'Primary background.',grp:'main',fg:C.navigator},
+  {id:'focus',name:'Focus Purple',hex:'#4C239B',rgb:'76 35 155',cmyk:'83 97 0 0',role:'Headlines & section titles',grp:'sup',fg:'#fff'},
+  {id:'horizon',name:'Deep Horizon',hex:'#2E1557',rgb:'46 21 87',cmyk:'93 100 29 29',role:'Primary body text',grp:'sup',fg:'#fff'},
+  {id:'light',name:'Light Gray',hex:'#E8E8E8',rgb:'232 232 232',cmyk:'8 6 6 0',role:'Secondary UI elements & neutral surfaces',grp:'sup',fg:C.horizon},
+  {id:'neutral',name:'Neutral Gray',hex:'#C3C3C3',rgb:'195 195 195',cmyk:null,role:'Section titles, dividers & borders',grp:'sup',fg:C.horizon},
+  {id:'dark',name:'Dark Gray',hex:'#777777',rgb:'119 119 119',cmyk:'55 46 46 11',role:'Secondary text, labels & metadata',grp:'sup',fg:'#fff'},
+  {id:'mint',name:'Signal Mint',hex:'#77EF9E',rgb:'119 239 158',cmyk:'58 0 63 0',role:'Upward trends, positive indicators, icons, patterns & illustrations',grp:'acc',fg:C.horizon},
+  {id:'echo',name:'Echo Purple',hex:'#B792FF',rgb:'183 146 255',cmyk:'36 44 0 0',role:'Supporting graphics, icons, patterns & illustrations',grp:'acc',fg:C.horizon},
+  {id:'sunset',name:'Sunset Orange',hex:'#FF6914',rgb:'255 105 20',cmyk:'0 73 100 0',role:'Downward trends & risk indicators',grp:'acc',fg:C.horizon}
+];
+function swatch(c,lg){
+  const border=c.hex==='#FFFFFF'?'border:1px solid var(--rule);':'';
+  const cm=c.cmyk?`<button type="button" data-copy="C${c.cmyk.split(' ')[0]} M${c.cmyk.split(' ')[1]} Y${c.cmyk.split(' ')[2]} K${c.cmyk.split(' ')[3]}">CMYK ${c.cmyk}</button>`:`<button type="button" class="tbd" data-copy="" title="CMYK in the PDF duplicates Deep Horizon's values. Pending confirmation.">CMYK TBD</button>`;
+  return `<div class="sw${lg?' lg':''}" style="background:${c.hex};color:${c.fg};${border}"><div><h4>${c.name}</h4><div class="role">${c.role}</div></div><div class="codes"><button type="button" data-copy="${c.hex}">${c.hex}</button><button type="button" data-copy="rgb(${c.rgb.replace(/ /g,', ')})">RGB ${c.rgb}</button>${cm}</div></div>`;
+}
+$('#swMain').innerHTML=COLORS.filter(c=>c.grp==='main').map(c=>swatch(c,true)).join('');
+$('#swSup').innerHTML=COLORS.filter(c=>c.grp==='sup').map(c=>swatch(c)).join('');
+$('#swAcc').innerHTML=COLORS.filter(c=>c.grp==='acc').map(c=>swatch(c)).join('');
+document.addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if(!b)return;if(!b.dataset.copy){toast('Value pending: see Open items');return}copy(b.dataset.copy,b.dataset.copy+' copied')});
+
+/* Contrast */
+function lum(h){const n=h.replace('#','');const c=[0,2,4].map(i=>parseInt(n.substr(i,2),16)/255).map(v=>v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4));return .2126*c[0]+.7152*c[1]+.0722*c[2]}
+function cr(a,b){const x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)}
+const PAIRS=[
+  {bg:'#FFFFFF',fg:'#7834E2',role:'Headline'},{bg:'#FFFFFF',fg:'#4C239B',role:'Headline / section title'},
+  {bg:'#FFFFFF',fg:'#2E1557',role:'Body'},{bg:'#FFFFFF',fg:'#777777',role:'Supporting text'},
+  {bg:'#FFFFFF',fg:'#C3C3C3',role:'Section title (large only)'},
+  {bg:'#7834E2',fg:'#FFFFFF',role:'Headline / body'},{bg:'#7834E2',fg:'#77EF9E',role:'Headline only'}
+];
+$('#ratio').innerHTML=PAIRS.map(p=>{const r=cr(p.bg,p.fg),large=r>=3,aa=r>=4.5;const name=h=>COLORS.find(c=>c.hex===h).name;
+  return `<div class="r" style="background:${p.bg};color:${p.fg};${p.bg==='#FFFFFF'?'border:1px solid var(--rule)':''}"><span class="s">${p.role}</span><span style="font-size:12.5px;opacity:.9">${name(p.fg)} on ${name(p.bg)}</span><span class="k"><span>${r.toFixed(2)}:1</span><span style="display:flex;gap:4px"><span class="badge ${aa?'':'fail'}">${aa?'AA body':'No body'}</span><span class="badge ${large?'':'fail'}">${large?'AA large':'Fails large'}</span></span></span></div>`}).join('');
+
+/* Tokens */
+const TOK={
+  css:()=>`:root {\n${COLORS.map(c=>`  --argos-${c.name.toLowerCase().replace(/ /g,'-')}: ${c.hex};`).join('\n')}\n\n  --argos-font: "Elza", sans-serif;\n  --argos-weight-display: 500; /* Elza Medium */\n  --argos-weight-title: 600;   /* Elza Semibold */\n  --argos-weight-body: 400;    /* Elza Regular */\n  --argos-icon-stroke: 2.5pt;\n  --argos-illustration-stroke: 1.5pt;\n}\n`,
+  json:()=>JSON.stringify({color:Object.fromEntries(COLORS.map(c=>[c.name.replace(/ (\w)/g,(m,a)=>a.toUpperCase()).replace(/^\w/,a=>a.toLowerCase()),{value:c.hex,rgb:c.rgb.split(' ').map(Number),cmyk:c.cmyk?c.cmyk.split(' ').map(Number):null,usage:c.role}])),font:{family:'Elza',display:500,title:600,body:400},icon:{stroke:'2.5pt',angle:60},illustration:{stroke:'1.5pt',outline:'#2E1557'}},null,2),
+  tw:()=>`// tailwind.config.js\nmodule.exports = {\n  theme: {\n    extend: {\n      colors: {\n        argos: {\n${COLORS.map(c=>`          '${c.name.split(' ')[0].toLowerCase()}': '${c.hex}',`).join('\n')}\n        }\n      },\n      fontFamily: { argos: ['Elza', 'sans-serif'] }\n    }\n  }\n}\n`
+};
+let tokFmt='css';
+const tokExt={css:'argos-tokens.css',json:'argos-tokens.json',tw:'tailwind.argos.txt'};
+function renderTok(){$('#tokOut').textContent=TOK[tokFmt]()}
+seg($('#tokFmt'),[{label:'CSS variables',value:'css'},{label:'JSON',value:'json'},{label:'Tailwind',value:'tw'}],'css',v=>{tokFmt=v;renderTok()});
+renderTok();
+$('#tokCopy').onclick=()=>copy(TOK[tokFmt](),'Tokens copied');
+$('#tokDl').onclick=()=>save(tokExt[tokFmt],TOK[tokFmt]());regDl($('#tokDl'));
+
+/* ---------- Type sandbox ---------- */
+const sb={bg:'#FFFFFF',h:'#7834E2',s:'#4C239B',b:'#2E1557'};
+const SBOPT={bg:['#FFFFFF','#7834E2','#2E1557','#E8E8E8'],h:['#7834E2','#4C239B','#FFFFFF','#77EF9E','#B792FF','#2E1557'],s:['#4C239B','#C3C3C3','#FFFFFF','#FF6914','#777777'],b:['#2E1557','#777777','#FFFFFF','#7834E2']};
+function chips(el,key){el.innerHTML=SBOPT[key].map(h=>{const n=COLORS.find(c=>c.hex===h).name;return `<button type="button" class="chip" style="background:${h}" aria-label="${n}" title="${n}" aria-pressed="${sb[key]===h}" data-k="${key}" data-h="${h}"></button>`}).join('')}
+function renderSb(){
+  chips($('#sbBg'),'bg');chips($('#sbHc'),'h');chips($('#sbSc'),'s');chips($('#sbBc'),'b');
+  const cv=$('#sbCanvas');cv.style.background=sb.bg;$('#sbH').style.color=sb.h;$('#sbS').style.color=sb.s;$('#sbB').style.color=sb.b;
+  const N=h=>COLORS.find(c=>c.hex===h).name, onP=sb.bg==='#7834E2', onW=sb.bg==='#FFFFFF';
+  const out=[];
+  if(!(onW||onP))out.push([0,`${N(sb.bg)} is not a primary background. Use Cloud White or Navigator Purple.`]);
+  else out.push([1,`${N(sb.bg)} background is approved.`]);
+  const H=['#7834E2','#4C239B','#FFFFFF','#77EF9E'];
+  if(!H.includes(sb.h))out.push([0,`Headlines can’t use ${N(sb.h)}. Use Navigator, Focus, Cloud White or Signal Mint.`]);
+  else if(sb.h==='#77EF9E'&&!onP)out.push([0,'Signal Mint headlines are only allowed on Navigator Purple.']);
+  else if(sb.h===sb.bg)out.push([0,'Headline color matches the background.']);
+  else out.push([1,`${N(sb.h)} headline follows the rules.`]);
+  const S=['#4C239B','#C3C3C3'];
+  if(!S.includes(sb.s)&&!(onP&&sb.s==='#FFFFFF'))out.push([0,`Section titles use Focus Purple or Neutral Gray${sb.s==='#FF6914'?'. Accent colors are never used for type':''}.`]);
+  else out.push([1,`${N(sb.s)} section title follows the rules${onP&&sb.s==='#FFFFFF'?' (white on purple, per the PDF example)':''}.`]);
+  const B=['#2E1557','#777777'];
+  if(!B.includes(sb.b)&&!(onP&&sb.b==='#FFFFFF'))out.push([0,`Body text uses Deep Horizon or Dark Gray${onP?' (or Cloud White on purple)':''}.`]);
+  else out.push([1,`${N(sb.b)} body text follows the rules.`]);
+  const rh=cr(sb.h,sb.bg), rs=cr(sb.s,sb.bg), rb=cr(sb.b,sb.bg);
+  out.push([rh>=3,`Headline contrast ${rh.toFixed(2)}:1 ${rh>=3?'passes':'fails'} AA large (3:1).`]);
+  out.push([rs>=3,`Section title contrast ${rs.toFixed(2)}:1 ${rs>=3?'passes':'is below 3:1. Keep gray titles large and short'}.`]);
+  out.push([rb>=4.5,`Body contrast ${rb.toFixed(2)}:1 ${rb>=4.5?'passes':'fails'} AA (4.5:1).`]);
+  $('#sbChecks').innerHTML=out.map(([ok,t])=>`<div class="${ok?'':'bad'}">${t}</div>`).join('');
+}
+$('#sandbox').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;sb[b.dataset.k]=b.dataset.h;renderSb()});
+renderSb();
+
+/* ---------- Market Tides ---------- */
+$('#tides').innerHTML=V.tides.map((t,i)=>`<div class="t">${svgOf(t,null).replace('<svg ','<svg style="width:100%;height:auto" ')}<div><b>${LV[i].k}</b><br><span>${LV[i].d}</span></div></div>`).join('');
+const gen={lvl:0,col:'w',rows:3,fmt:'wide',ends:'motif'};
+const GCOL={w:{bg:'#FFFFFF',fg:C.echo,name:'Echo on Cloud White'},p:{bg:C.navigator,fg:C.mint,name:'Mint on Navigator'},pw:{bg:C.navigator,fg:'#FFFFFF',name:'White on Navigator'},pe:{bg:C.navigator,fg:C.echo,name:'Echo on Navigator'}};
+const GFMT={wide:[1600,900],card:[1050,600],square:[1200,1200],banner:[1800,500]};
+// Motif geometry (in motif units: 1 line gap = 3.1). Each band = 20 parallel lines, every line is the first one
+// translated down and to the left. Bands stack at a pitch of one band thickness, and the per-line offset
+// resets at each band, which is what interlocks the bands.
+const GL=[{lam:360,amp:28,cyc:2},{lam:280,amp:33,cyc:2.5},{lam:200,amp:37,cyc:3.5},{lam:140,amp:40,cyc:4.5}];
+const TN=20, TGAP=3.1, TDX=1.4;
+function tidesSvg(){
+  const [W,H]=GFMT[gen.fmt], c=GCOL[gen.col], L=GL[gen.lvl];
+  const bandH=TN*TGAP, contained=gen.ends==='motif';
+  // size: in contained mode leave room for the wave amplitude above and below
+  const totalU=gen.rows*bandH+(contained?2*L.amp+TN*0:0);
+  const u=contained?Math.min(H*0.88/(gen.rows*bandH+2*L.amp), W*0.9/(L.lam*L.cyc)) : H/(gen.rows*bandH);
+  const gap=TGAP*u, dx=TDX*u, lam=L.lam*u, amp=L.amp*u, step=Math.max(2,lam/60);
+  let x0,x1,y0,k0,k1;
+  if(contained){
+    const blockH=(gen.rows*bandH+2*L.amp)*u; y0=(H-blockH)/2+amp;
+    const len=Math.floor((W*0.9)/lam*2)/2*lam; x0=(W-len)/2+TN*dx/2; x1=x0+len; k0=0;k1=gen.rows-1;
+  }else{ y0=0; x0=-lam; x1=W+lam; k0=-2; k1=gen.rows+1; }
+  let p='';
+  for(let k=k0;k<=k1;k++){
+    for(let i=0;i<TN;i++){
+      const ox=-i*dx, oy=y0+(k*TN+i)*gap;
+      let d='';
+      for(let x=x0;x<=x1+0.01;x+=step){const y=oy-amp*Math.cos((x-x0)/lam*Math.PI*2);d+=(d?'L':'M')+(x+ox).toFixed(1)+' '+y.toFixed(1)}
+      p+=`<path d="${d}"/>`;
+    }
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}"><rect width="100%" height="100%" fill="${c.bg}"/><g fill="none" stroke="${c.fg}" stroke-width="${(0.75*u).toFixed(2)}" stroke-linecap="round" stroke-linejoin="round">${p}</g></svg>`;
+}
+function renderGen(){
+  $('#genOut').innerHTML=tidesSvg();
+  $('#genLbl').innerHTML=`<b>${LV[gen.lvl].k}</b> · ${LV[gen.lvl].d}`;
+  $('#genDots').innerHTML=LV.map((_,i)=>`<i class="${i===gen.lvl?'on':''}"></i>`).join('');
+}
+$('#genOut').onclick=()=>{gen.lvl=(gen.lvl+1)%4;renderGen()};
+renderGen();
+
+/* ---------- Icons ---------- */
+const ICN=['search','compass','globe','target','trend-up','trend-down','warning','percent','balance','institution','chart-up','chart-down'];
+const RISK=['trend-down','warning','chart-down'];
+const ICOL={navigator:{c:C.navigator,sec:C.neutral,bg:'light',l:'Navigator · light'},mint:{c:C.mint,sec:'rgba(255,255,255,.45)',bg:'dark',l:'Signal Mint · dark'},white:{c:'#FFFFFF',sec:'rgba(255,255,255,.45)',bg:'dark',l:'Cloud White · dark'},echo:{c:C.echo,sec:'rgba(255,255,255,.45)',bg:'dark',l:'Echo Purple · dark'},sunset:{c:C.sunset,sec:C.neutral,bg:'light',l:'Sunset Orange · risk only'}};
+let icCol='navigator';
+function iconSvg(i,col){const g=V.icons[i],o=ICOL[col];const sec=o.sec.startsWith('rgba')?'#FFFFFF" fill-opacity=".45':o.sec;return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 ${(g.w+4).toFixed(2)} ${(g.h+4).toFixed(2)}" role="img" aria-label="${ICN[i]}">${pathsOf(g,o.c,o.c)}</svg>`}
+function renderIcons(){
+  const o=ICOL[icCol];const grid=$('#iconGrid');grid.className='icons '+o.bg;
+  grid.innerHTML=V.icons.map((g,i)=>{const dis=icCol==='sunset'&&!RISK.includes(ICN[i]);return `<button type="button" data-i="${i}" ${dis?'disabled style="opacity:.25;cursor:not-allowed" title="Sunset Orange is for risk icons only"':''}>${iconSvg(i,icCol)}<span>${ICN[i]}</span></button>`}).join('');
+  $('#icHint').textContent=icCol==='sunset'?'Sunset Orange is enabled only for risk icons: trend-down, warning, chart-down.':(DL?'Click an icon to download its SVG. Shift-click copies the code.':'Click an icon to copy its SVG code.');
+}
+seg($('#icCol'),Object.entries(ICOL).map(([k,v])=>({label:v.l,value:k})),icCol,v=>{icCol=v;renderIcons()});
+renderIcons();
+$('#iconGrid').addEventListener('click',e=>{const b=e.target.closest('button[data-i]');if(!b||b.disabled)return;const i=+b.dataset.i;const svg=iconSvg(i,icCol);if(DL&&!e.shiftKey)save(`ARGOS_icon_${ICN[i]}_${icCol}.svg`,svg);else copy(svg,'Icon SVG copied')});
+regDl({set hidden(v){renderIcons()}});
+
+/* ---------- Voice checker ---------- */
+const SAMPLES=[
+  'The Federal Reserve has raised interest rates by 0.25 percentage points. Here’s how the change may affect different sectors.',
+  'Big changes are happening in the economy! Find out what everyone is talking about!',
+  'The company has reported strong revenue growth, although rising operating costs may affect future profitability.',
+  'With revenue growing this fast, the company is clearly heading toward success!'
+];
+$('#vcSamples').innerHTML=SAMPLES.map((s,i)=>`<button type="button" data-i="${i}">PDF example ${i+1} (${i%2?'don’t':'do'})</button>`).join('');
+$('#vcSamples').onclick=e=>{const b=e.target.closest('button');if(!b)return;$('#vcIn').value=SAMPLES[+b.dataset.i];runVc()};
+const HYPE=['clearly','obviously','guaranteed','guarantee','definitely','certainly','sure thing','can\'t lose','cannot lose','skyrocket','skyrocketing','to the moon','huge','massive','explode','exploding','soar','soaring','unstoppable','game-changer','game changer','no-brainer','best ever','incredible','amazing','insane','crazy','risk-free','risk free','always','never fail','will double','will triple','heading toward success'];
+const URGENT=['now!','act now','act fast','hurry','don\'t miss','dont miss','last chance','before it\'s too late','limited time','right now','today only','fomo','find out','you won\'t believe'];
+const VAGUE=['big changes','everyone','everybody','something','things','a lot','lots of','tons of','some experts','people say','they say','this fast','so much'];
+const OPP=['growth','growing','gain','gains','rise','rising','rally','opportunity','opportunities','strong','surge','up ','upside','profit','beat','record high','outperform'];
+const RISKW=['risk','risks','may','might','could','although','however','but ','decline','loss','losses','cost','costs','uncertain','uncertainty','volatil','downside','depend','not guaranteed','past performance'];
+function findAll(t,list){const lo=t.toLowerCase().replace(/[’]/g,"'");const hits=[];list.forEach(w=>{let i=lo.indexOf(w);while(i>-1){const pre=i===0||/[^a-z]/.test(lo[i-1]);if(pre)hits.push([i,i+w.length,w]);i=lo.indexOf(w,i+1)}});return hits}
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function runVc(){
+  const t=$('#vcIn').value.trim();
+  if(!t){$('#vcOut').innerHTML='<div class="prin"><b>Waiting</b><ul><li>Type or paste copy to check it.</li></ul></div>';$('#vcMarked').textContent='';return}
+  const hype=findAll(t,HYPE), urg=findAll(t,URGENT), vag=findAll(t,VAGUE), opp=findAll(t,OPP), risk=findAll(t,RISKW);
+  const excl=[...t.matchAll(/!/g)].map(m=>[m.index,m.index+1,'!']);
+  const caps=[...t.matchAll(/\b[A-Z]{4,}\b/g)].filter(m=>!['ARGOS','NYSE','NASDAQ','GAAP','EBITDA'].includes(m[0])).map(m=>[m.index,m.index+m[0].length,m[0]]);
+  const sents=t.split(/(?<=[.!?])\s+/).filter(Boolean);
+  const first=sents[0]||'', fw=first.split(/\s+/).length;
+  const nums=(t.match(/\d/g)||[]).length>0;
+  const res=[];
+  // Direct
+  const dI=[];if(fw>28)dI.push(`First sentence is ${fw} words. Lead with the key fact in under ~25.`);if(/^(find out|discover|learn|check out|guess)/i.test(first))dI.push('Opens with a teaser instead of the information.');
+  res.push({k:'Be direct',ok:!dI.length,items:dI.length?dI:['Leads with information.']});
+  // Precise
+  const pI=[];if(vag.length)pI.push('Vague: '+[...new Set(vag.map(v=>'“'+v[2].trim()+'”'))].join(', '));if(!nums)pI.push('No specific figure, date or source. Add one if the claim depends on it.');
+  res.push({k:'Be precise',ok:!vag.length&&nums,soft:!vag.length,items:pI.length?pI:['Uses specific facts.']});
+  // Balanced
+  const bI=[];if(opp.length&&!risk.length)bI.push('Mentions an opportunity ('+[...new Set(opp.map(v=>v[2].trim()))].slice(0,3).join(', ')+') with no risk or conditional language.');
+  res.push({k:'Be balanced',ok:!bI.length,items:bI.length?bI:[risk.length?'Risk or uncertainty is acknowledged.':'No one-sided opportunity claims found.']});
+  // Measured
+  const mI=[];if(hype.length)mI.push('Overstated certainty or hype: '+[...new Set(hype.map(v=>'“'+v[2]+'”'))].join(', '));if(urg.length)mI.push('Artificial urgency: '+[...new Set(urg.map(v=>'“'+v[2]+'”'))].join(', '));if(excl.length)mI.push(`${excl.length} exclamation mark${excl.length>1?'s':''}. Drop them.`);if(caps.length)mI.push('Shouting caps: '+caps.map(c=>c[2]).join(', '));
+  res.push({k:'Be measured',ok:!mI.length,items:mI.length?mI:['No hype, urgency or exaggeration.']});
+  const fails=res.filter(r=>!r.ok&&!r.soft).length, softs=res.filter(r=>!r.ok&&r.soft).length;
+  const verdict=fails===0?(softs?'On voice. Consider adding a specific fact.':'On voice. Ready for review.'):`Off voice on ${fails} of 4 principles. Revise before publishing.`;
+  $('#vcOut').innerHTML=`<div class="verdict" style="${fails?'background:#8A3300':''}">${verdict}</div>`+res.map(r=>`<div class="prin ${r.ok?'':'warn'}"><b>${r.k}<em>${r.ok?'Pass':(r.soft?'Check':'Revise')}</em></b><ul>${r.items.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></div>`).join('');
+  // highlight
+  const marks=[...hype,...urg,...vag,...excl,...caps].sort((a,b)=>a[0]-b[0]);let html='',pos=0;
+  marks.forEach(([s,e])=>{if(s<pos)return;html+=esc(t.slice(pos,s))+'<mark class="flag">'+esc(t.slice(s,e))+'</mark>';pos=e});html+=esc(t.slice(pos));
+  $('#vcMarked').innerHTML=marks.length?html:'<span class="muted">Nothing flagged in the text.</span>';
+}
+$('#vcIn').addEventListener('input',runVc);runVc();
+
+/* ---------- Open items ---------- */
+const ISS=[
+  ['color','Navigator Purple RGB is listed as <b>R120 G52 B26</b>; the HEX #7834E2 gives <b>B226</b>. This site uses B226.','p. 18'],
+  ['color','Support colors copy says <b>“Ground Purple”</b> for headlines, but the swatch is named <b>Focus Purple</b>. Pick one name.','p. 19'],
+  ['color','<b>Neutral Gray CMYK</b> repeats Deep Horizon’s values (C93 M100 Y29 K29). Needs the real print values.','p. 19'],
+  ['color','Neutral Gray role reads “Headlines, Dividers &amp; Borders”, while type rules use it for <b>section titles</b>. Align the two.','pp. 19, 22'],
+  ['type','Example on Navigator Purple shows <b>Cloud White body text</b>, but the body-text rule lists only Deep Horizon and Dark Gray. State the on-purple rule.','p. 22'],
+  ['type','Page title typo: <b>“USEAGE”</b> should be “USAGE”.','p. 22'],
+  ['logo','No <b>clear space</b> or <b>minimum size</b> defined for the logo, symbol or wordmark.','pp. 14–15'],
+  ['logo','Logo forms “respond to real market data in 25% increments”. Define the <b>data source</b> and thresholds (e.g. index, volatility measure).','p. 17'],
+  ['apps','Collaboration title reads <b>“ARGOS X BOSS”</b>; the partner is <b>Bose</b>.','p. 33'],
+  ['apps','<b>App</b> and <b>Business card</b> pages still use placeholder text; app screens are empty.','pp. 35–36'],
+  ['doc','Table of contents is a placeholder.','p. 2'],
+  ['illus','Illustration spec table splits <b>“Background”</b> across two cells (“Back / Ground”).','p. 27']
+];
+let done={};try{done=JSON.parse(localStorage.getItem('argos-issues')||'{}')}catch(e){}
+function renderIss(){
+  $('#issues').innerHTML=ISS.map((x,i)=>`<label class="${done[i]?'done':''}"><input type="checkbox" id="iss${i}" ${done[i]?'checked':''} data-i="${i}"><span class="t">${x[1]}</span><span class="where">${x[0].toUpperCase()} · ${x[2]}</span></label>`).join('');
+  const n=Object.values(done).filter(Boolean).length;$('#issBar').style.width=(n/ISS.length*100)+'%';
+}
+$('#issues').addEventListener('change',e=>{const i=e.target.dataset.i;done[i]=e.target.checked;try{localStorage.setItem('argos-issues',JSON.stringify(done))}catch(_){}renderIss()});
+renderIss();
+
+/* ---------- Router: one page per top menu ---------- */
+const PAGES=['overview','brand-strategy','visual-identity','in-use'];
+const PNAME={'overview':'Home','brand-strategy':'Brand Strategy','visual-identity':'Visual Identity','in-use':'In Use'};
+function route(){
+  const id=(location.hash||'#overview').slice(1);
+  const el=document.getElementById(id);
+  const pg=el?(el.classList.contains('page')?el:el.closest('.page')):null;
+  const page=pg?pg.id:'overview';
+  $$('.page').forEach(p=>p.hidden=p.id!==page);
+  $$('#menu .top').forEach(a=>a.classList.toggle('on',a.dataset.page===page));
+  $$('#menu .panel a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));
+  const i=PAGES.indexOf(page), prev=PAGES[i-1], next=PAGES[i+1];
+  $('#pager').innerHTML=page==='overview'?'':`${prev?`<a href="#${prev}"><small>Previous</small>${PNAME[prev]}</a>`:'<span></span>'}${next?`<a class="nx" href="#${next}"><small>Next</small>${PNAME[next]}</a>`:''}`;
+  if(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#menu'))document.activeElement.blur();$('#menu').classList.remove('open');$('#menuBtn').setAttribute('aria-expanded','false');
+  document.title=(page==='overview'?'':PNAME[page]+' · ')+'ARGOS Brand Guidelines';
+  requestAnimationFrame(()=>{if(!el||el===pg)window.scrollTo(0,0);else{const y=el.getBoundingClientRect().top+window.scrollY-80;window.scrollTo(0,y)}});
+}
+window.addEventListener('hashchange',route);route();
+$('#menuBtn').onclick=()=>{const o=$('#menu').classList.toggle('open');$('#menuBtn').setAttribute('aria-expanded',o)};
+})();
+</script>
+</body>
+</html>
